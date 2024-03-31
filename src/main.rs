@@ -23,10 +23,16 @@ fn main() {
         .expect("Unable to read stdin (data not UTF-8?)");
 
     // Split the output
-    let grouped: String = data
+    let mut grouped: String = data
         .split(cli.split.as_str())
         .filter(|group| group.contains(&cli.find))
+        .map(|group| {
+            let mut group = group.to_string();
+            group.push('\n');
+            group
+        })
         .collect();
+    grouped.pop(); // Get rid of the final newline
 
     // Post the output back
     output
