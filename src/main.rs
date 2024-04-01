@@ -10,6 +10,8 @@ struct Operation {
     find: String,
     #[arg(short, long, default_value = "\n\n")]
     join: String,
+    #[arg(short, long, default_value_t = usize::MAX)]
+    limit: usize,
 }
 
 fn main() {
@@ -33,6 +35,7 @@ fn main() {
             group.push_str(&cli.join);
             group
         })
+        .take(cli.limit)
         .collect();
 
     // Remove the extra delimiter
