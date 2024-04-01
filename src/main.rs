@@ -6,8 +6,10 @@ use std::io::{Read, Write};
 struct Operation {
     #[arg(short, long, default_value = "\n\n")]
     split: String,
-    #[arg(short, long, default_value = None)]
+    #[arg(short, long)]
     find: String,
+    #[arg(short, long, default_value = "\n\n")]
+    join: String,
 }
 
 fn main() {
@@ -28,11 +30,15 @@ fn main() {
         .filter(|group| group.contains(&cli.find))
         .map(|group| {
             let mut group = group.to_string();
-            group.push('\n');
+            group.push_str(&cli.join);
             group
         })
         .collect();
-    grouped.pop(); // Get rid of the final newline
+
+    // Remove the extra delimiter
+    for _ in 0..cli.join.len() {
+        grouped.pop(); // Get rid of the final newline
+    }
 
     // Post the output back
     output
