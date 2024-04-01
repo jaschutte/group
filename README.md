@@ -13,8 +13,11 @@ foobar
 
 ## Hyprland
 Retrieves all Hyprland clients and filters based on the name (in this case, Spotify):
+
 `$ hyprctl clients | group -f 'Spotify'`
+
 Output:
+
 ```
 Window 4d8bcd0 -> Spotify:
 	mapped: 1
