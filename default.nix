@@ -1,13 +1,13 @@
 { lib, stdenv, fetchFromGitHub, rustPlatform }:
 rustPlatform.buildRustPackage rec {
   pname = "group";
-  version = "1.1.0";
+  version = "1.2.0";
 
   src = fetchFromGitHub {
     owner = "jaschutte";
     repo = "group";
     rev = "v${version}";
-    sha256 = "sha256-A+O2NjPMBHw0OPm5S6mo8Pt1NMSP0+RB1mowaX4Oyb8=";
+    sha256 = "sha256-pzaFiEza+pXp0xQhTzM9a4e393vFhUKRBCYOZysv5aU=";
   };
-  cargoSha256 = "sha256-Dir6/iJ1H2mFQTLS8OTRJ1bOE+Ztp0iNADGaatscqMs=";
+  cargoSha256 = "sha256-lk/RKzNCx7Q1HJAkcyGuC6zvOo04a4OcZtyw8KLhC2g=";
 }
